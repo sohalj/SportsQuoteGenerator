@@ -1,3 +1,7 @@
+//var random =  Math.floor(Math.random() * 4);
+
+
+
 
 $(document).ready(function(){
 	$("#getQuote").on("click", function(){
@@ -14,6 +18,8 @@ $(document).ready(function(){
 			});*/
 
 			//json.forEach(function(val){
+			
+
 			console.log("random number  "  + random);
 			var random =  Math.floor(Math.random() * 4)
 			console.log("random number asdfasdf "  + random);
@@ -34,6 +40,18 @@ $(document).ready(function(){
 				html1 += "<img src=" + val.imageLink + "alt=" +  val.quoteAuthor  + ">";
 		$(".message").html(html);
 		$(".picture").html(html1);
+
+		
+			$(".quote, .author").css({"background-color": "white", 
+																"font-size": "200%",
+																"color": "black"});
+			
+			$("body").css({"background-color": "red"});
+			//$('head').append('<link rel="stylesheet" href="mystyle.css" type="text/css" />');
+
+		
+		
+
 		});
 	});
 });
