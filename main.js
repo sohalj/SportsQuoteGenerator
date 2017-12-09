@@ -1,34 +1,8 @@
 //var random =  Math.floor(Math.random() * 4);
 
-function setDefault(){
-	$.getJSON("quotes.json", function(json){   /*Sets defaults for quote and picture associated with it*/
-				html2="";
-				html3="";
-				defaultTweet="";
-
-
-				html2 += "<div class='quote'>"
-				html2 += "<p>" + '"' + json[0].quoteText + '"' + "</p>"
-				html2 += "<p class='text-right'>" + "- " + json[0].quoteAuthor  + "</p>"
-				html3 += "<img src=" + json[0].imageLink + "alt=" +  json[0].quoteAuthor  + "align=" + "middle" + ">";
-				defaultTweet += "<a class='fa fa-twitter'" + "href=" + "'https://twitter.com/intent/tweet?" + "text=" + '"' + json[0].quoteText + '"' + " - " + json[0].quoteAuthor  + "'" +  "data-size='large'" +  "target='_blank'>" + "</a>"
-				//defaultTweet += "<a class='fa fa-twitter'" + "href=" + "'https://twitter.com/intent/tweet?text=H'" + '"' +  json[0].quoteText + '"' +  "data-size='large'" +  "target='_blank'>" + "</a>"
-		
-
-				$(".default").html(html2);
-				$(".defaultpic").html(html3);
-				$(".defaultTweet").html(defaultTweet);
-	});
-
-}
-
 
 
 function getQuote (){
-	$("#getQuote1").on("click", function(){
-		$(".default").remove();
-		$(".defaultpic").remove();
-		$(".defaultTweet").remove();
 
 		$.getJSON("quotes.json", function(json){
 			var html = "";
@@ -59,7 +33,7 @@ function getQuote (){
 
 				html += "<p class='text-right'>" + "- " + val.quoteAuthor  + "</p>"
 
-				html += "<button type='button' class='btn btn-primary' id='getQuote1'> 'newQuote' </button>"
+				html += "<button type='button' class='btn btn-primary' onclick='button()'> 'newQuote' </button>"
 
 
 				html +="</div>"
@@ -87,15 +61,16 @@ function getQuote (){
 		
 
 		});
-	});
+}
+
+function button(){
+	getQuote();
 }
 
 
-
 $(document).ready(function(){
-	
-	setDefault();
 	getQuote();
-	//newQuote();
-			
+	$("#getQuote1").on("click", function(){
+		getQuote();
+	});			
 });
