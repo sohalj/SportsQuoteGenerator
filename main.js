@@ -1,4 +1,4 @@
-//var random =  Math.floor(Math.random() * 4);
+var currentNumber = 0;
 
 
 
@@ -7,54 +7,69 @@ function getQuote (){
 		$.getJSON("quotes.json", function(json){
 			var html = "";
 			var html1 = "";
-			var htmlTweet = "";
-
-			/*json = json.filter(function(val){
-				
-				var value =  Math.floor(Math.random() * 4)
-				console.log("value  "  +  value);
-				return (val.id == value);
-					//console.log("val.id  "  +  val.id);
-			});*/
-
-			//json.forEach(function(val){
-			
-
-			console.log("random number  "  + random);
-			var random =  Math.floor(Math.random() * 4)
-			console.log("random number asdfasdf "  + random);
-			var val = json[random];
-
-				html += "<div class='quote'>"
 
 
-				html += "<p>" + '"' + val.quoteText + '"' + "</p>"
+			do{
+				var random =  Math.floor(Math.random() * 4);
+			}while(random==currentNumber)
+
+			currentNumber = random;
+
+
+			var val = json[currentNumber];
+
+				html += "<div class='quote text-center'>"
+
+
+				html += "<p id='quote1'>" + '"' + val.quoteText + '"' + "</p>"
 
 
 				html += "<p class='text-right'>" + "- " + val.quoteAuthor  + "</p>"
 
-				html += "<button type='button' class='btn btn-primary' onclick='button()'> 'newQuote' </button>"
+				html += "<button type='button' class='btn quoteButton' onclick='buttonClick()' > newQuote </button>"
 
+			  html += "<a class='fa fa-twitter' style='float:right;'" + "href=" + "'https://twitter.com/intent/tweet?" + "text=" + '"' + val.quoteText + '"' + " - " + val.quoteAuthor  + "'" +  "data-size='large'" +  "target='_blank'>" + "</a>"
+		
 
 				html +="</div>"
 
-								//html += "<button type='button' class='btn btn-primary' id='getQuote1'> 'newQuote' </button>"
+				html1 += "<img class='pic img-responsive' style='display:block; margin:auto; width:57%;' src=" + val.imageLink + "alt=" +  val.quoteAuthor  + ">";
+		
 
-				html1 += "<img src=" + val.imageLink + "alt=" +  val.quoteAuthor  + "align=" + "middle" + ">";
 
+			var color = val.colorVal;
 
-				htmlTweet += "<a class='fa fa-twitter'" + "href=" + "'https://twitter.com/intent/tweet?" + "text=" + '"' + val.quoteText + '"' + " - " + val.quoteAuthor  + "'" +  "data-size='large'" +  "target='_blank'>" + "</a>"
 		
 
 		$(".message").html(html);
 		$(".picture").html(html1);
-		$(".tweet").html(htmlTweet);
-		$(".quote").css({"background-color": "white", 
-																"font-size": "2em",
-																"color": "black",
-																"font-style": "italic"});
-			
-		$("body").css({"background-color": "red"});
+		
+		$(".quote").css({
+			"color": color,
+		});
+		
+		$(".quoteButton").fadeIn().css({
+			//"color":  "white",
+			"background-color": color,
+			"transition": "2s"
+});
+	
+$(".fa").fadeIn().css({
+			"transition": "2s",
+			"background-color": color
+});
+
+
+
+
+
+
+
+
+
+$("body").css({"background-color": color,
+			"transition": "2s"
+			});
 
 
 		
@@ -63,14 +78,18 @@ function getQuote (){
 		});
 }
 
-function button(){
+
+
+
+function buttonClick(){
 	getQuote();
 }
 
 
+
+
+
 $(document).ready(function(){
+
 	getQuote();
-	$("#getQuote1").on("click", function(){
-		getQuote();
-	});			
 });
