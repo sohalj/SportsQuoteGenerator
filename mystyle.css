@@ -1,35 +1,32 @@
-.foot{
+.fa{   /*Twitter Button*/
+	position: absolute;
+	color: white;
+	padding: 6px;
+	border-radius: 10%;
+	bottom: 18px;
+	right: 10px;			
+}
+
+.quoteButton{/*New Quote Button*/
+	color:  white;
+	font-style: normal;
+	padding: 7px;
+	font-size: 17px;
+}
+
+.quote{		/*QuoteText*/
+	font-size: 30px;
+	font-style: italic;
+}
+
+.setText{  /*Header amd top paragrap*/
+	color: white;
+}
+
+.foot{		/*footer*/
     color: white;
     position: fixed;
     bottom: 0;
     right: 0;
     left:10px;
-
-}					
-
-
- .fa{
-			color: white;
-			padding: 5px;
-			border-radius: 10%;
-			
-}
-
-.quoteButton{
-			color:  white;
-			font-style: normal;
-			font-family: "Times New Roman", Georgia, Serif;
-			padding: 7px;
-			
-		}
-
-
-.quote{
-	font-size: 2em;
-	font-style: italic;
-
-}
-
-.setText{
-	color: white;
-}
+}		
